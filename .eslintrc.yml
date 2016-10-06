@@ -1,0 +1,20 @@
+parser: babel-eslint
+extends: airbnb
+env:
+  browser: true
+  es6: true
+plugins:
+  - react
+  - jsx-a11y
+  - import
+settings:
+  import/core-modules:
+    - electron
+  import/resolver:
+    webpack:
+      config: 'webpack.config.babel.js'
+rules:
+  no-console: off
+  react/prefer-stateless-function:
+    - error
+    - ignorePureComponents: true
