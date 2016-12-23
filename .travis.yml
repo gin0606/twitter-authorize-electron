@@ -13,3 +13,14 @@ before_deploy:
   - sudo apt-get -qq update
   - sudo apt-get -qq install -y wine1.7
   - npm run package
+deploy:
+  provider: releases
+  api_key:
+    secure: zo9iJg/5oWT0RoCPKiTB7wRRSFUpW4sy4vCaKs1TLtJfv173xtv/QDD0wLHWkb1BQQHbaYq2zozSZX0I6RxRX0dHTGCSH/AdzhstHCf1BUONQN/hpLQuKAdDn4SxK5Yuu1tPUmNmCkn7ztmhMhRi+dfBRip1JXN1xHgrKAlF9M+cOTMWhtbg99MQ69Lmc22klQ4Fm3KgkYWFUblDDTsVvmSR7U/yMsGaRNmnxFaKZg9cF1tVFtLOrAdshudHRgEMCyhLH24OfvO412SuhEG7GQJP+QXTNENICT38CI4Q10tX31MlH4vgJD19OwAXxsNmWe5M5mQkDdf78vHwlA1FtFHhNzDCvntTqVn67xsxQGuOmI+3BiQhL4+ktqwiIHtV0vI/IPP3UHQr/YKluGnHFZAafNcHpmNWoJrUEJ9KTqQQUPBUdKBBNZ+ywWZ8SIfPFZ7wi1Y7u1MWSh9+dfD+o8veJQ0ErRd+ymVASVi6Fc5JvtgS7cP58gJ5qDlhqlnt7DIs0J7Az4qTPGgxh05PPRA+/h0yxj7KPyYU7krIEeMXjjQOebNcc+Fmf/g/IDMvo2/3UipTdB1K9JaO8C5JQ3KF84J0xWPYkpDAx+sBosAeCpcHRQZ7U//r5Ok6PCEjIIRmVCN/thgDMyaNdKL/+3lv3ybAyoy6HLgrwIfA6xU=
+  file:
+    - build/Release/twitter-authorize-electron-darwin-x64.zip
+    - build/Release/twitter-authorize-electron-win32-x64.zip
+    - build/Release/twitter-authorize-electron-win32-ia32.zip
+  on:
+    repo: gin0606/twitter-authorize-electron
+    tags: true
