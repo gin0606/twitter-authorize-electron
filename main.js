@@ -1,5 +1,7 @@
 const electron = require('electron');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;

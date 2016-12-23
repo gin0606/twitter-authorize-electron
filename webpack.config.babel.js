@@ -6,19 +6,22 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 const isProduction = process.env.NODE_ENV === 'production';
 
 const devtool = isProduction ? 'eval' : 'inline-source-map';
-const plugins = [];
+const plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
+    },
+  }),
+];
 if (isProduction) {
   plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: { warnings: false },
-  }));
-  plugins.push(new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('production'),
   }));
 }
 
 export default {
   entry: {
-    bundle: './src/main.jsx',
+    bundle: path.join(__dirname, 'src/main'),
   },
   output: {
     path: path.join(__dirname, 'public'),
@@ -72,7 +75,7 @@ export default {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  target: 'electron',
+  target: 'electron-renderer',
   devtool,
   plugins,
 };

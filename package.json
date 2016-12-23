@@ -6,7 +6,13 @@
   "scripts": {
     "start": "NODE_ENV=development electron main.js",
     "build": "NODE_ENV=development webpack",
-    "lint": "eslint src/**/*.{js,jsx}"
+    "lint": "eslint src/**/*.{js,jsx}",
+    "release:build": "NODE_ENV=production webpack",
+    "package:osx": "NODE_ENV=production node build.js darwin",
+    "package:win": "NODE_ENV=production node build.js win32",
+    "package:osx:zip": "cd build/Release && zip --quiet -r --symlinks twitter-authorize-darwin-x64.zip twitter-authorize-darwin-x64",
+    "package:win:zip": "cd build/Release && zip --quiet -r --symlinks twitter-authorize-win32-x64.zip twitter-authorize-win32-x64 && zip --quiet -r --symlinks twitter-authorize-win32-ia32.zip twitter-authorize-win32-ia32",
+    "package": "NODE_ENV=production npm-run-all release:build package:osx package:win package:osx:zip package:win:zip"
   },
   "author": "gin0606",
   "repository": "https://github.com/gin0606/twitter-authorize-electron",
