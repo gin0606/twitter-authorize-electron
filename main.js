@@ -8,6 +8,47 @@ const Menu = electron.Menu;
 
 const menuTemplate = [
   {
+    label: 'Electron',
+    submenu: [
+      {
+        label: 'About Electron',
+        selector: 'orderFrontStandardAboutPanel:',
+      },
+      {
+        type: 'separator',
+      },
+      {
+        label: 'Services',
+        submenu: [],
+      },
+      {
+        type: 'separator',
+      },
+      {
+        label: 'Hide Electron',
+        accelerator: 'CmdOrCtrl+H',
+        selector: 'hide:',
+      },
+      {
+        label: 'Hide Others',
+        accelerator: 'CmdOrCtrl+Shift+H',
+        selector: 'hideOtherApplications:',
+      },
+      {
+        label: 'Show All',
+        selector: 'unhideAllApplications:',
+      },
+      {
+        type: 'separator',
+      },
+      {
+        label: 'Quit',
+        accelerator: 'CmdOrCtrl+Q',
+        click: () => { app.quit(); },
+      },
+    ],
+  },
+  {
     label: 'Edit',
     submenu: [
       { label: 'Copy', accelerator: 'CmdOrCtrl+C', role: 'copy' },
